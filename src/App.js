@@ -7,6 +7,13 @@ import {
 } from 'react-router-dom'
 
 import { Navbar } from './app/Navbar'
+import { AddPostForm } from './features/posts/AddPostForm'
+import { EditPostForm } from './features/posts/EditPostForm'
+import { PoemsList} from './features/poems/PoemsList'
+import { PostsList } from './features/posts/PostsList'
+import { SinglePoemPage } from './features/poems/SinglePoemPage'
+import { SinglePostPage } from './features/posts/SinglePostPage'
+import { PoemBuilder } from './app/PoemBuilder'
 
 function App() {
   return (
@@ -18,11 +25,25 @@ function App() {
             exact
             path="/"
             render={() => (
-              <section>
-                <h2>Welcome to the Redux Essentials example app!</h2>
-              </section>
+              <React.Fragment>
+                <PostsList/>
+                <AddPostForm/>
+                <PoemsList/>
+              </React.Fragment>
             )}
           />
+          <Route
+            exact
+            path="/history"
+            render={() => (
+              <React.Fragment>
+                <PoemsList/>
+              </React.Fragment>
+            )}
+          />
+          <Route exact path="/poems/:poemId" component={PoemBuilder}/>
+          <Route exact path="/posts/:postId" component={SinglePostPage}/>
+          <Route exact path="/editPost/:postId" component={EditPostForm}/>
           <Redirect to="/" />
         </Switch>
       </div>
