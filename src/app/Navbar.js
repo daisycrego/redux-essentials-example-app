@@ -1,22 +1,23 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import styles from './Navbar.module.css'
+
+import { selectAllPosts } from '../features/posts/postsSlice'
 
 export const Navbar = () => {
-  
-  const user = "?"
+  const totalPosts = useSelector((state) => selectAllPosts(state).length)
+  const dispatch = useDispatch()
+
 
   return (
     <nav>
       <section>
-        <h1>bldr</h1>
+        <h1>Redux Quick Start Example</h1>
 
-        <div className="navContent">
-          <div className="navLinks">
-            <Link to="/"><button type="button">BEWARE</button></Link>
-            <Link to="/history"><button type="button">History</button></Link>
-            <Link to="/words"><button type="button">Words</button></Link>
-            <Link to="/relax"><button type="button">DON'T CLICK ME</button></Link>
-            <Link to="/me"><button type="button">by {user}</button></Link>
+        <div className={styles.navContent}>
+          <div className={styles.navLinks}>
+            <Link to="/">Posts</Link>            
           </div>
         </div>
       </section>

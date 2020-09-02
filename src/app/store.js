@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import postsReducer from '../features/posts/postsSlice'
-import poemsReducer from '../features/poems/poemsSlice'
+import usersReducer from '../features/users/usersSlice'
 
 export default configureStore({
   reducer: {
   	posts: postsReducer,
-  	poems: poemsReducer
+  	users: usersReducer
   }
 })
